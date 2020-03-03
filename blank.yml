@@ -1,0 +1,54 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
+package practica_1;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.*; 
+
+public class juego_activo {
+    Scanner sc = new Scanner(System.in);
+    String palabras = sc.nextLine();
+    
+    int columnas,filas;
+    String largo;
+    int posicion_palabra ;
+    
+    String [] banco_palabras_extraidas = new String[10];
+    String [][] sopa = new String[filas][columnas];
+    
+    public void matriz_sopa(){
+        
+        banco_palabras banco = new banco_palabras();
+        
+        banco_palabras_extraidas = Arrays.copyOf(banco.palabras_salidas(),banco.palabras_salidas().length);
+        
+        for(int i=0;i<=9;i++){
+            posicion_palabra = i;
+            
+            System.out.println(banco_palabras_extraidas [posicion_palabra]);
+        }
+        
+        largo = banco_palabras_extraidas [1];
+        System.out.println(largo+"  prueba");
+        
+        char[] ch = banco_palabras_extraidas [1].toCharArray(); 
+        
+        int largo_on = ch.length;
+        System.out.println(largo_on);
+    }
+}
