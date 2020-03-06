@@ -1,0 +1,147 @@
+package practica_1;
+import java.util.Scanner;
+
+public class banco_palabras {
+    
+    Scanner sc = new Scanner(System.in);
+    Scanner scpa = new Scanner(System.in);
+    int posicion ;
+    String palabra;
+    String cambio_palabra;
+    static String [] a = new String[10];   
+            
+    String [] palabras_salidas(){
+        return a  ;
+    }
+    
+        
+    void palabras_entrada(){
+        //
+        boolean llave_salida = true;
+        int posicion = 0;
+        //
+        for(int i=0; i<=10;i++){
+            posicion = i;
+            if(posicion<10){
+                if(a[posicion]==null){
+                    break;
+                }
+            }
+        }        
+        //
+        System.out.println("Escribir la palabra");
+        //
+        do{
+            try{ 
+                palabra = sc.nextLine();}
+            catch(Exception e){
+                System.out.println("Vuelva a Ingresar la palabra");
+            }
+        
+            if(palabra.length()>=4&&palabra.length()<=10){
+                if(posicion==10){
+                    System.out.println("Lista llena");}
+                else if(a[posicion]==null){
+                    a [posicion] = palabra;
+                    System.out.println("Aceptada");}
+                    llave_salida = false;
+            }else{
+                System.out.println("Escriba una palabra entre 4 y 10 letras");}
+        }while(llave_salida);
+    }
+    
+    void palabras_modificar(){
+        
+        boolean llave_salida = true;
+        int posicion = 0;
+        
+        System.out.println("Escribir la palabra vieja");
+        
+        try{ 
+        palabra = sc.nextLine();}
+        catch(Exception e){
+            System.out.println("Vuelva a Ingresar la palabra");
+        }
+        
+        for(int i=0; i<=10;i++){
+            posicion = i;
+            if(posicion<10){
+                if(a[posicion].equals(palabra)){
+                    break;
+                }
+            }
+        }
+        
+        System.out.println("Escribir la palabra nueva");
+        do{
+            
+            try{ 
+            cambio_palabra = sc.nextLine();}
+            catch(Exception e){
+                    System.out.println("Vuelva a Ingresar la palabra");
+            }
+            if(cambio_palabra.length()>=4 && cambio_palabra.length()<=9){    
+                if(posicion == 10){
+                    System.out.println("No se encuentra la palabra");}
+                else{a[posicion] = cambio_palabra;
+                    System.out.println("Aceptada");}
+            llave_salida = false;
+            }else{System.out.println("Escriba una palabra entre 4 y 10 letras");}    
+        }while(llave_salida);
+    }
+    
+    void palabras_mostrar(){
+        String error =  "Vacio";
+        boolean llave_seguridad = true;
+        int posicion_palabra=0;
+        for(int i=0;i<=9;i++){
+            posicion_palabra = i;
+            if(a[posicion_palabra]==null){
+                llave_seguridad = false; 
+                a[posicion_palabra]=(error);
+                
+            }
+        }
+        {
+        System.out.println("Lista de Palabras");
+        for (int i=0;i<9;i++ ){
+            System.out.println(a[i]);
+        }
+        for(int i=0;i<=9;i++){
+            posicion_palabra = i;
+            if(a[posicion_palabra].equals(error)){
+                llave_seguridad = false; 
+                a[posicion_palabra]=null;
+                
+            }
+        }
+        
+    }
+    }
+    void palabras_eliminar(){
+        
+        System.out.println("Escribir la palabra vieja");
+        
+        try{ 
+        palabra = sc.nextLine();}
+        catch(Exception e){
+            System.out.println("Vuelva a Ingresar la palabra");
+        }
+        
+        for(int i=0; i<=10;i++){
+            posicion = i;
+            if(posicion<10){
+                if(a[posicion].equals(palabra)){
+                    break;
+                }
+            }
+        }
+        
+        if(posicion==10){
+        System.out.println("Palabra no encontrada");
+        }else{
+        System.out.println("Eliminada con Exito");
+        a[posicion] = null;
+        }
+    }
+}
